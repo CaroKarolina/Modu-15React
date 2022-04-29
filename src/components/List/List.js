@@ -1,7 +1,13 @@
-import Column from '../Column/Column';
 import styles from './List.module.scss';
+import Column from '../Column/Column';
+import ColumnForm from '../ColumnForm/ColumnForm';
+import SearchForm from '../SearchForm/SearchForm';
+import { useSelector } from 'react-redux';
 
 const List = () => {
+
+    const columns = useSelector(state => state.columns);
+
     return (
         <div className={styles.list}>
             <header className={styles.header}>
@@ -9,13 +15,16 @@ const List = () => {
                     <span className={styles.span}>soon!</span>
                 </h2>
             </header>
+            <SearchForm />
             <p className={styles.description}>Interesting things I want to check out</p>
             <section className={styles.columns}>
-            <Column title="Books" />
-            <Column title="Movies" />
-            <Column title="Games" />
-            {/* <span className={styles.icon + ' fa fa-' + props.icon} /> */}
+                {columns.map(column => 
+                    <Column
+                    key={column.id} 
+                    {...column} />
+                )}
             </section>
+            <ColumnForm />
         </div>
     );
 };
