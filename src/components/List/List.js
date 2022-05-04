@@ -1,7 +1,6 @@
 import styles from './List.module.scss';
 import Column from '../Column/Column';
 import ColumnForm from '../ColumnForm/ColumnForm';
-import SearchForm from '../SearchForm/SearchForm';
 import { useSelector } from 'react-redux';
 
 const List = () => {
@@ -15,7 +14,6 @@ const List = () => {
                     <span className={styles.span}>soon!</span>
                 </h2>
             </header>
-            <SearchForm />
             <p className={styles.description}>Interesting things I want to check out</p>
             <section className={styles.columns}>
                 {columns.map(column => 
