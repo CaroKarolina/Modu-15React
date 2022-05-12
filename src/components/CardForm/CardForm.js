@@ -8,6 +8,8 @@ const CardForm = props => {
 
     const [title, setTitle] = useState('');
     
+    const dispatch = useDispatch();
+
     const handleSubmit = e => {
         e.preventDefault();
         dispatch({ type: 'ADD_CARD', payload: {title, columnId:props.columnId} });
@@ -15,8 +17,6 @@ const CardForm = props => {
         // props.action({ title: title }, props.columnId);
         setTitle('');
     };
-
-    const dispatch = useDispatch();
 
 	return (        
         <form className={styles.cardForm} onSubmit={handleSubmit}>
