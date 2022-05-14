@@ -8,11 +8,15 @@ export const getFilteredCards = (state, columnId) => state.cards
 
 export const getListById = ({ lists }, listId) => lists.find(list => list.id === listId);
 
-export const getColumnsByLists = (state, listId) => state.columns
-  .filter(column => column.listId === listId);
-  // const columns = useSelector(state => getColumnsByLists(state, listId))
+export const getColumnsByList = ({columns}, columnListId) => columns
+  .filter(column => column.listId === columnListId);
+  
+export const getAllColumns = (state, id) => state.columns
+// export const getColumnsByList = ({columns}, columnListId) => columns.filter(column => column.listId === columnListId);
+export const getAllLists = (state, id) => state.lists;
 
-// export const getAllLists = (state, id) => state.list;
+// action creators
+export const addColumn = payload => ({ type: 'ADD_COLUMN', payload });
 
 const reducer = (state, action) => {
   switch(action.type) {
@@ -20,6 +24,8 @@ const reducer = (state, action) => {
       return { ...state, columns: [...state.columns, { ...action.payload, id: shortid() }]};
     case 'ADD_CARD':
       return { ...state, cards: [...state.cards, { ...action.payload, id: shortid() }]};
+    case 'ADD_LIST':
+      return { ...state, lists: [...state.lists, { ...action.payload, id: shortid() }]};
     case 'UPDATE_SEARCHSTRING':
       console.log('update', action.payload)
       return { ...state, searchString: action.payload };

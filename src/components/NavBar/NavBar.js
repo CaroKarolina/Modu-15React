@@ -1,5 +1,5 @@
 import styles from './NavBar.module.scss';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 const NavBar = () => {
     
@@ -7,7 +7,7 @@ const NavBar = () => {
         <div className={styles.nav}>
             <div className={styles.nav_container}>
                 <div className={styles.nav_row1}>
-                    <span className="fa fa-tasks" />
+                    <Link to='/'><span className="fa fa-tasks" /></Link>
                 </div>
                 <ul>
                     <li><NavLink className={({ isActive }) => isActive ? styles.linkActive : undefined} to="/">Home</ NavLink></li>

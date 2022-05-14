@@ -5,6 +5,7 @@ import Home from './components/Home/Home';
 import About from './components/About/About';
 import Favorite from './components/Favorite/Favorite';
 import List from './components/List/List';
+// import Lists from './components/Lists/Lists';
 
 const App = () => {
   return (
