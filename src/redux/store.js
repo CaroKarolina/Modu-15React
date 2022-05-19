@@ -1,6 +1,10 @@
-import { createStore } from 'redux';
 import shortid from 'shortid';
 import initialState from './initialState';
+import { createStore, combineReducers } from 'redux';
+import listsReducer from './listsRedux';
+import columnsReducer from './columnsRedux';
+import cardsReducer from './cardsRedux';
+import searchStringReducer from './searchStringRedux';
 
 //selectors
 export const getFilteredCards = (state, columnId) => state.cards
@@ -12,30 +16,31 @@ export const getColumnsByList = ({columns}, columnListId) => columns
   .filter(column => column.listId === columnListId);
   
 export const getAllColumns = (state, id) => state.columns
-// export const getColumnsByList = ({columns}, columnListId) => columns.filter(column => column.listId === columnListId);
+
 export const getAllLists = (state, id) => state.lists;
 
 // action creators
 export const addColumn = payload => ({ type: 'ADD_COLUMN', payload });
 
 const reducer = (state, action) => {
-  switch(action.type) {
-    case 'ADD_COLUMN':
-      return { ...state, columns: [...state.columns, { ...action.payload, id: shortid() }]};
-    case 'ADD_CARD':
-      return { ...state, cards: [...state.cards, { ...action.payload, id: shortid() }]};
-    case 'ADD_LIST':
-      return { ...state, lists: [...state.lists, { ...action.payload, id: shortid() }]};
-    case 'UPDATE_SEARCHSTRING':
-      console.log('update', action.payload)
-      return { ...state, searchString: action.payload };
-    case 'RENDER_LIST':
-      return { lists: [...state.lists, { ...action.payload, id: shortid() }]};
-    default:
-      return state;
-  }
+  const newState = {
+    lists: listsReducer(state.lists, action),
+    columns: columnsReducer(state.columns, action),
+    cards: cardsReducer(state.cards, action),
+    searchString: searchStringReducer(state.searchString, action)
+  };
+
+  return newState;
 };
 
+const subreducers = {
+  lists: listsReducer,
+  columns: columnsReducer,
+  cards: cardsReducer,
+  searchString: searchStringReducer
+}
+
+// const reducer = combineReducers(subreducers);
 const store = createStore(
   reducer,
   initialState,

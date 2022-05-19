@@ -1,3 +1,4 @@
+import styles from './ListForm.module.scss';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Button from '../Button/Button';
@@ -17,7 +18,7 @@ const ListForm = props => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className={styles.listForm}>
             Title: <TextInput value={title} onChange={e => setTitle(e.target.value)} />
             Description: <TextInput value={description} onChange={e => setDescription(e.target.value)} />
             <Button>Add list</Button>

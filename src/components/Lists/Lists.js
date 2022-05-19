@@ -7,7 +7,6 @@ import ListForm from '../ListForm/ListForm';
 const Lists = () => {
 
     const lists = useSelector(getAllLists);
-    console.log('lists',lists)
 
     return (
         <section className={styles.lists}>

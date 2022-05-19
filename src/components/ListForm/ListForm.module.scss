@@ -1,16 +1,16 @@
 @import '../../styles/settings.scss';
 
-.listForm {
-    flex-shrink: 0;
-    width: calc(33% - 12px);
-    // background: $color-light;
-    margin: 0 $base-size $base-size 0;
-    padding: 10 px;
-    border-radius: $radius;
-    // box-shadow: 0 math.div($base-size, 4) 0 rgba(0,0,0,0.3);
-    color: $color-dark;
+.listForm{
+    display: flex;
+    justify-content: center;
+}
 
-    &:last-child {
-        margin: 0 0 $base-size 0;
-      }
+.input {
+    min-width: 200px;
+    background: $color-light;
+    border: 1px solid lighten($color-dark, 60%);
+    padding: $base-size ($base-size * 1.5);
+    margin: 0 0 $base-size 0;
+    font-family: $font-text;
+    border-radius: $radius;
 }
