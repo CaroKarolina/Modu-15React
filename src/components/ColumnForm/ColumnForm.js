@@ -1,4 +1,3 @@
-import styles from './ColumnForm.module.scss';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -8,10 +7,9 @@ import TextInput from '../TextInput/TextInput';
 const ColumnForm = props => {
 
     const {listId} = useParams();
-    const [title, setTitle] = useState(''); 
-    const [icon, setIcon] = useState(''); 
+    const [title, setTitle] = useState('');
+    const [icon, setIcon] = useState('');
     const dispatch = useDispatch();
-    console.log('listId', listId)
 
     const handleSubmit = e => {
         e.preventDefault();

@@ -10,7 +10,6 @@ const Column = props => {
     const cards = useSelector(state => state.cards)
         .filter(card => card.columnId === props.id)
         .filter(card => card.title.toLowerCase().includes(searchString.toLowerCase()));
-        console.log('Column', cards)
 
         return (
         <div className={styles.column}>

@@ -41,3 +41,8 @@
     margin: 0 0 $base-size 0;
   }
 }
+
+form {
+  display: flex;
+  justify-content: center;
+}

@@ -18,7 +18,7 @@ const ListForm = props => {
     }
 
     return (
-        <form onSubmit={handleSubmit} className={styles.listForm}>
+        <form className={styles.listForm} onSubmit={handleSubmit}>
             Title: <TextInput value={title} onChange={e => setTitle(e.target.value)} />
             Description: <TextInput value={description} onChange={e => setDescription(e.target.value)} />
             <Button>Add list</Button>
