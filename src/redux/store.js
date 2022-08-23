@@ -14,10 +14,13 @@ export const getListById = ({ lists }, listId) => lists.find(list => list.id ===
 
 export const getColumnsByList = ({columns}, columnListId) => columns
   .filter(column => column.listId === columnListId);
-  
+
 export const getAllColumns = (state, id) => state.columns
 
 export const getAllLists = (state, id) => state.lists;
+
+export const getFavoriteCards = ({cards}) => cards
+  .filter(card => card.isFavorite)
 
 // action creators
 export const addColumn = payload => ({ type: 'ADD_COLUMN', payload });
