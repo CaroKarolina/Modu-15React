@@ -1,18 +1,19 @@
 import styles from './ListForm.module.scss';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import {addList} from '../../redux/listsRedux'
 import Button from '../Button/Button';
 import TextInput from '../TextInput/TextInput';
 
 const ListForm = props => {
 
-    const [title, setTitle] = useState(''); 
-    const [description, setDescription] = useState(''); 
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
     const dispatch = useDispatch();
 
     const handleSubmit = e => {
         e.preventDefault();
-        dispatch({ type: 'ADD_LIST', payload: {title, description}});
+        dispatch(addList({title, description}));
         setTitle('');
         setDescription('');
     }

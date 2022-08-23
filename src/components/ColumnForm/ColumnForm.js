@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { addColumn } from '../../redux/columnsRedux'
 import Button from '../Button/Button';
 import TextInput from '../TextInput/TextInput';
 
@@ -13,7 +14,7 @@ const ColumnForm = props => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        dispatch({ type: 'ADD_COLUMN', payload: {title, icon, listId}});
+        dispatch(addColumn({title, icon, listId}));
         setTitle('');
         setIcon('');
     }
